@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 const api = {
-  key: "497b5556649d1b6c015eee31de44b156",
+ 
   base: "https://api.openweathermap.org/data/2.5/",
 };
 let lat = 0;
@@ -12,16 +12,15 @@ export default function App() {
   const [weather, setWeather] = useState({});
   const [geo, setGeo] = useState({});
 
-  //https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&appid={497b5556649d1b6c015eee31de44b156
+  //https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&appid=
 
-  // https://api.openweathermap.org/data/2.5/weather?q=London,uk&callback=test&appid={497b5556649d1b6c015eee31de44b156
+  // https://api.openweathermap.org/data/2.5/weather?q=London,uk&callback=test&appid=
 
   const search = (e) => {
     if (e.key === "Enter") {
       fetch(
         `
-        ${api.base}direct?q=${query}&limit=5&appid=497b5556649d1b6c015eee31de44b156`
-      )
+        ${api.base}direct?q=${query}&limit=5&appid=      )
         .then((res) => res.json())
         .then((result) => {
           setGeo(result);

@@ -2,9 +2,14 @@
 import React, {useId,useState } from "react";
 //import "./App.css";
 const api = {
+<<<<<<< HEAD
   key: process.env.API_KEY,
   base: process.env.API_BASE,
   base1: process.env.API_BASE1,
+=======
+ 
+  base: "https://api.openweathermap.org/data/2.5/",
+>>>>>>> adab88e6a057471f6fbbbc9f2cf345965aaaae72
 };
 
 export default function App() {

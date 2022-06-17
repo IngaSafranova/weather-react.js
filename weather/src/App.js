@@ -1,23 +1,24 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, {useId,useState } from "react";
+import React, {useState } from "react";
+import { useEffect } from "react";
 //import "./App.css";
-const api = {
-<<<<<<< HEAD
-  key: process.env.API_KEY,
-  base: process.env.API_BASE,
-  base1: process.env.API_BASE1,
-=======
- 
-  base: "https://api.openweathermap.org/data/2.5/",
->>>>>>> adab88e6a057471f6fbbbc9f2cf345965aaaae72
-};
+import SearchIcon from '@mui/icons-material/Search';
+
+// const api = {
+//   key: process.env.API_KEY,
+//   base: process.env.API_BASE,
+//   base1: process.env.API_BASE1,
+// };
 
 export default function App() {
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState("Bilston");
   const [weather, setWeather] = useState({});
   const [geo, setGeo] = useState([]);
 
-  
+  // useEffect(()=>{
+  //   handleGeo();
+  // },[])
 
 
       
@@ -26,27 +27,31 @@ export default function App() {
     if (e.key === "Enter" || e.type === "click") {
       fetch(
         `
-              ${api.base1}direct?q=${city}&limit=5&appid=${api.key}`
+   ${process.env.REACT_APP_API_BASE1}direct?q=${city}&limit=5&appid=${process.env.REACT_APP_API_KEY}`
       )
         .then((res) => res.json())
         .then((result) => {
+          setCity({city: result[0].name,
+          country: result[0].country})
           const lat = result[0].lat;
           const lon = result[0].lon;
-         console.log(lat)
+         console.log(result)
 
          
           return fetch(`
-                ${api.base}onecall?lat=${lat}&lon=${lon}&units=metric&appid=${api.key}`)
+                ${process.env.REACT_APP_API_BASE}onecall?lat=${lat}&lon=${lon}&units=metric&appid=${process.env.REACT_APP_API_KEY}`)
             .then((res) => res.json())
             .then((data) => {
               console.log(data);
-              setWeather({ temp: data.current.temp });
+              setWeather({ temp: data.current.temp,
+                            weather: data.current.weather[0].description });
               
             });
         });
         setCity("");
     }
   };
+
 
   const dateBuilder = (d) => {
     let months = [
@@ -82,31 +87,34 @@ export default function App() {
   return (
     <div className="app">
       <main>
+      <div className="flex">
         <div className="search-box">
           <input
             className="search-bar"
             type="text"
-            placeholder="Search ..."
+            placeholder="Search..."
             onChange={(e) => setCity(e.target.value)}
-            query={city}
+            query ={city}
            value ={city}
+         
           />
-          <button onClick={handleGeo}>Search</button>
-          <div></div>
+     
+         <button onClick={handleGeo} className="btn" fontSize="large">Search</button>
         </div>
-
+        </div>
         <div>
           <div className="location-box">
-            <div className="location">{city}</div>
+            <div className="location">{city.city} , {city.country}</div>
             <div className="date">{dateBuilder(new Date())}</div>
           </div>
           <div className="weather-box">
-            {/* <div className="temp"> 
-         {Math.round(weather.data.current.temp)}c
-         </div> */}
-            {/* <div className="weather">{weather.data.weather[0].main}</div> */}
+            <div className="temp"> 
+         {Math.round(weather.temp)}c
+         </div>
+            <div className="weather">{weather.weather}</div>
           </div>
         </div>
+    
       </main>
     </div>
   );

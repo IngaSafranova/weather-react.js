@@ -18,11 +18,10 @@ export default function App() {
 
   // useEffect(()=>{
   //   handleGeo();
-  //   return setCity
+  //   return setWeather
   // },[city])
 
 
-      
  const handleGeo = (e) => {
     
      if(e.key ==="Enter" || e.type === "click") {
@@ -32,7 +31,7 @@ export default function App() {
       )
         .then((res) => res.json())
         .then((result) => {
-          setCity({
+          setGeo({
             city: result[0].name,
           country: result[0].country
         })
@@ -96,7 +95,7 @@ export default function App() {
             className="search-bar"
             type="text"
             placeholder="Search..."
-            onChange={(e) => setCity(e.target.value)}
+            onChange={e =>setCity(e.target.value)}
             query ={city}
            value ={city}
          
@@ -107,7 +106,7 @@ export default function App() {
         </div>
         <div>
           <div className="location-box">
-            <div className="location">{city.city}  {city.country}</div>
+            <div className="location">{geo.city}  {geo.country}</div>
             <div className="date">{dateBuilder(new Date())}</div>
           </div>
           <div className="weather-box">

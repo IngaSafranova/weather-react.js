@@ -13,14 +13,14 @@
 }
 
 .app {
-  background-image: url('./assets/cold.jpeg');
+  background-image: url('./assets/windy.jpg');
   background-size: cover;
   background-position: bottom;
   transition: 0.4 ease-out;
 }
 
 .app.warm {
-  background-image: url('./assets/sunflower.jpeg');
+  background-image: url('./assets/sunny.jpg');
 }
 
 main {
@@ -41,14 +41,17 @@ main {
   flex-direction: row;
   padding-top: 30px;
   justify-content: right;
+  align-items: baseline;
 }
 
 .search-box .search-bar{
-  display: block;
+  display: flex;
   width: 60%;
   padding: 25px;
+  height: 50%;
   text-align: center;
-  
+  justify-content: center;
+  align-items: center;
 
   appearance: none;
   background: none;
@@ -74,16 +77,20 @@ main {
 }
 
 .search-box .btn {
-  background-color: beige;
-  padding: 15px;
- align-items: stretch;
-   
+  background-color: sandybrown;
+  padding: 10px;
+ align-items: center;
+   color: #fff;
 
 }
 
 .btn{
   padding-top: 30px;
-  align-items: baseline
+  align-items: center;
+  border-radius: 16px 16px 16px 16px;
+  margin-top: -25px;
+  border: none;
+  margin-left: 5px;
 }
 
 .location-box .location{

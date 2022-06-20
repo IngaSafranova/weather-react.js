@@ -18,21 +18,24 @@ export default function App() {
 
   // useEffect(()=>{
   //   handleGeo();
-  // },[])
+  //   return setCity
+  // },[city])
 
 
       
  const handleGeo = (e) => {
     
-    if (e.key === "Enter" || e.type === "click") {
+     if(e.key ==="Enter" || e.type === "click") {
       fetch(
         `
    ${process.env.REACT_APP_API_BASE1}direct?q=${city}&limit=5&appid=${process.env.REACT_APP_API_KEY}`
       )
         .then((res) => res.json())
         .then((result) => {
-          setCity({city: result[0].name,
-          country: result[0].country})
+          setCity({
+            city: result[0].name,
+          country: result[0].country
+        })
           const lat = result[0].lat;
           const lon = result[0].lon;
          console.log(result)
@@ -85,7 +88,7 @@ export default function App() {
     return `${day} ${date} ${month} ${year}`;
   };
   return (
-    <div className="app">
+    <div className={typeof(weather.current !=="undefined")? weather.temp > 17? "app warm":"app":"app"}>
       <main>
       <div className="flex">
         <div className="search-box">
@@ -104,7 +107,7 @@ export default function App() {
         </div>
         <div>
           <div className="location-box">
-            <div className="location">{city.city} , {city.country}</div>
+            <div className="location">{city.city}  {city.country}</div>
             <div className="date">{dateBuilder(new Date())}</div>
           </div>
           <div className="weather-box">

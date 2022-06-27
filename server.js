@@ -11,7 +11,7 @@
     app.use(express.static('public'));
 
     app.post('/weather',function(req,res){
-
+            console.log(req.body)
     });
 
     app.listen(3000,()=>{

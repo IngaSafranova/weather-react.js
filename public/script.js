@@ -1,4 +1,7 @@
 
+
+
+
 const enter = document.querySelector('.btn');
 //console.log(enter)
 const locationElement = document.querySelector('.location');
@@ -83,13 +86,12 @@ function getWeather(city,data){
  console.log(temperature)
  const humidity = `${data.current.humidity }%`
  console.log(humidity)
- 
-
     locationElement.textContent = city
     dateElement.textContent =dateBuilder(new Date())
     weatherElement.textContent = weather;
     temperatureElement.textContent = temperature;
     humidityElement.textContent = humidity;
+    
 
 }
 

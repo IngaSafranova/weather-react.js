@@ -1,0 +1,23 @@
+*,*::before, *::after {
+    box-sizing: border-box;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+body {
+    background: linear-gradient(to right,darkgoldenrod ,darkorange ); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    max-width: 90%;
+    width: 500px;
+    height: 450px;
+    background-color: whitesmoke;
+    box-shadow: 0 5px 10px black;
+    border-radius: 10px;
+}
